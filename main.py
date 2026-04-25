@@ -4,7 +4,7 @@ from feedgen.feed import FeedGenerator
 
 # 这里配置你的 Google Hack 指令
 # 示例：搜索过去24小时内关于“量子计算”的PDF文档，排除特定站点
-QUERY = 'intitle:"量子计算" filetype:pdf -site:youtube.com'
+QUERY = 'Bitcoin price forecast 2026 filetype:html'
 API_KEY = os.getenv('SERPER_API_KEY') # 从 GitHub Secrets 获取密钥
 
 def fetch_data():
