@@ -1,8 +1,9 @@
 name: Execute Monitor
 on:
   schedule:
-    - cron: '0 0 * * *' # 每天凌晨(UTC)自动运行，也就是北京时间早上8点
-  workflow_dispatch: # 允许你手动点击按钮运行
+    # 这里的 0,8,16 是 UTC 时间，对应北京时间 08:00, 16:00, 00:00
+    - cron: '0 0,8,16 * * *'
+  workflow_dispatch: # 保持这个，允许你手动运行
 
 jobs:
   build:
