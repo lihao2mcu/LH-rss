@@ -1,0 +1,27 @@
+name: Execute Monitor
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天凌晨(UTC)自动运行，也就是北京时间早上8点
+  workflow_dispatch: # 允许你手动点击按钮运行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install requests feedgen
+      - name: Run script
+        env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        run: python main.py
+      - name: Deploy to Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output # 将输出目录下的文件发布到 Pages
