@@ -2,7 +2,7 @@ name: Execute Monitor
 on:
   schedule:
     # 这里的 0,8,16 是 UTC 时间，对应北京时间 08:00, 16:00, 00:00
-    - cron: '0 0,8,16 * * *'
+    - cron: '0 0,13 * * *'
   workflow_dispatch: # 保持这个，允许你手动运行
 
 jobs:
